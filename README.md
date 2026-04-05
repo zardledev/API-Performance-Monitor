@@ -33,15 +33,14 @@ Project in progress.
 - Prisma integration
 - Endpoint CRUD API
 - Input validation with Zod
-- API test runner
-- Response time tracking
-- Endpoint statistics aggregation
+- API test runner with response time tracking
+- Endpoint performance statistics
+- React dashboard foundation
 
 ### Next Steps
-- Global statistics dashboard
-- Filtering and sorting
-- React frontend dashboard
-- Authentication and monitoring history improvements
+- Global metrics aggregation
+- Automated test scheduling
+- React dashboard
 
 ---
 
@@ -52,7 +51,7 @@ Project in progress.
 - ORM: Prisma
 - Validation: Zod
 - HTTP Client: Axios
-- Frontend: React (planned)
+- Frontend: React
 
 ---
 
@@ -185,6 +184,32 @@ Example response:
   "minDuration": 57,
   "maxDuration": 57,
   "successRate": 100
+}
+```
+
+---
+
+### Get endpoint stats
+
+```http
+GET /api/endpoints/:id/stats
+```
+
+Example response:
+
+```json
+{
+  "total": 12,
+  "avgDuration": 83.5,
+  "minDuration": 41,
+  "maxDuration": 152,
+  "p95Duration": 152,
+  "p99Duration": 152,
+  "successCount": 10,
+  "failureCount": 2,
+  "successRate": 83.33333333333334,
+  "failureRate": 16.666666666666664,
+  "lastTestAt": "2026-04-05T12:41:15.203Z"
 }
 ```
 
