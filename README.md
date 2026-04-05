@@ -239,12 +239,14 @@ The project uses feature branches to keep each milestone isolated and easy to re
 | `feature/api-test-runner` | Adds the test runner that executes requests and stores response metrics. |
 | `feature/performance-stats` | Adds endpoint statistics and aggregated performance metrics. |
 | `feature/react-dashboard` | Introduces the React frontend dashboard for interacting with monitors. |
+| `feature/react-modern-ui` | Rewriting the UX for a more product-oriented UI design |
 
 ---
 
 ## Project Structure
 
 ```text
+frontend/
 backend/
 ├── src/
 │   ├── app.js
@@ -271,7 +273,12 @@ backend/
 ```
 
 ---
+## Download API Link
 
+[Postman](docs/ressources/postman/Endpoint%20PRISMA%20API%20%20-%20API-Performance-Monitor.postman_collection.json)
+
+
+---
 ## Roadmap
 
 ```mermaid
