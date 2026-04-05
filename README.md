@@ -10,9 +10,10 @@ PulseAPI is a project focused on measuring API performance and providing insight
 
 This project demonstrates practical skills in:
 - backend architecture design
-- API development with Node.js
+- REST API development with Node.js
 - database integration with PostgreSQL
-- performance analysis
+- ORM usage with Prisma
+- input validation and error handling
 - building scalable and maintainable applications
 
 ---
@@ -23,16 +24,16 @@ Project in progress.
 
 ### Completed
 - Express backend initialization
-- Modular architecture (routes, middlewares, modules)
+- Modular architecture (routes, controllers, services, repositories)
 - Healthcheck endpoint
 - PostgreSQL setup with Docker
-
-### In Progress
 - Prisma integration
+- Endpoint CRUD API
+- Input validation with Zod
 
 ### Next Steps
-- Endpoint management (CRUD)
-- API performance testing
+- API performance test runner
+- Response time tracking
 - Performance statistics
 - React dashboard
 
@@ -42,7 +43,8 @@ Project in progress.
 
 - Backend: Node.js, Express
 - Database: PostgreSQL (Docker)
-- ORM: Prisma (in progress)
+- ORM: Prisma
+- Validation: Zod
 - Frontend: React (planned)
 
 ---
@@ -76,18 +78,94 @@ npm run dev
 
 ---
 
-### 4. Test the API
+### 4. Environment variables
 
-```text
-GET http://localhost:3000/health
+Create a `.env` file in `backend/`:
+
+```env
+PORT=3000
+DATABASE_URL="postgresql://pulseapi_user:pulseapi_password@localhost:5432/pulseapi?schema=public"
 ```
 
-Response:
+---
+
+## API Endpoints
+
+### Healthcheck
+
+```http
+GET /health
+```
+
+---
+
+### Endpoints CRUD
+
+#### Create endpoint
+
+```http
+POST /api/endpoints
+```
 
 ```json
 {
-  "status": "ok",
-  "message": "PulseAPI backend is running"
+  "name": "JSON Placeholder Users",
+  "url": "https://jsonplaceholder.typicode.com/users",
+  "method": "GET",
+  "description": "Test API"
+}
+```
+
+---
+
+#### Get all endpoints
+
+```http
+GET /api/endpoints
+```
+
+---
+
+#### Get endpoint by id
+
+```http
+GET /api/endpoints/:id
+```
+
+---
+
+#### Update endpoint
+
+```http
+PUT /api/endpoints/:id
+```
+
+---
+
+#### Delete endpoint
+
+```http
+DELETE /api/endpoints/:id
+```
+
+---
+
+## Validation
+
+All inputs are validated using Zod.
+
+Example of validation errors:
+
+```json
+{
+  "status": "error",
+  "message": "Validation failed",
+  "errors": [
+    {
+      "field": "url",
+      "message": "URL must be a valid URL"
+    }
+  ]
 }
 ```
 
@@ -97,12 +175,23 @@ Response:
 
 ```text
 backend/
-└── src/
-    ├── app.js
-    ├── server.js
-    ├── modules/
-    │   └── health/
-    ├── middlewares/
+├── src/
+│   ├── app.js
+│   ├── server.js
+│   ├── lib/
+│   │   └── prisma.js
+│   ├── modules/
+│   │   ├── health/
+│   │   └── endpoints/
+│   │       ├── endpoint.routes.js
+│   │       ├── endpoint.controller.js
+│   │       ├── endpoint.service.js
+│   │       ├── endpoint.repository.js
+│   │       └── endpoint.validation.js
+│   ├── middlewares/
+│   │   └── validate.js
+├── prisma/
+│   └── schema.prisma
 ```
 
 ---
@@ -119,12 +208,10 @@ flowchart LR
     F --> G[Performance Stats]
     G --> H[React Dashboard]
 
-    class A,B,C done
-    class D inprogress
-    class E,F,G,H planned
+    class A,B,C,D,E done
+    class F,G,H planned
 
     classDef done fill:#2ecc71,color:#fff;
-    classDef inprogress fill:#f39c12,color:#fff;
     classDef planned fill:#95a5a6,color:#fff;
 ```
 
