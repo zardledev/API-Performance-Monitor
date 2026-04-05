@@ -7,11 +7,23 @@ datasource db {
 }
 
 model Endpoint {
-  id          String   @id @default(uuid())
+  id          String         @id @default(uuid())
   name        String
   url         String
   method      String
   description String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  tests       EndpointTest[]
+}
+
+model EndpointTest {
+  id         String   @id @default(uuid())
+  endpointId String
+  status     Int
+  duration   Int
+  success    Boolean
+  createdAt  DateTime @default(now())
+
+  endpoint Endpoint @relation(fields: [endpointId], references: [id])
 }
