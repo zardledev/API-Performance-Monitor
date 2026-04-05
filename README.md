@@ -34,10 +34,12 @@ Project in progress.
 - Endpoint CRUD API
 - Input validation with Zod
 - API test runner with response time tracking
+- Endpoint performance statistics
+- React dashboard foundation
 
 ### Next Steps
-- Performance statistics per endpoint
 - Global metrics aggregation
+- Automated test scheduling
 - React dashboard
 
 ---
@@ -49,7 +51,7 @@ Project in progress.
 - ORM: Prisma
 - Validation: Zod
 - HTTP Client: Axios
-- Frontend: React (planned)
+- Frontend: React
 
 ---
 
@@ -175,6 +177,32 @@ Example response:
 
 ---
 
+### Get endpoint stats
+
+```http
+GET /api/endpoints/:id/stats
+```
+
+Example response:
+
+```json
+{
+  "total": 12,
+  "avgDuration": 83.5,
+  "minDuration": 41,
+  "maxDuration": 152,
+  "p95Duration": 152,
+  "p99Duration": 152,
+  "successCount": 10,
+  "failureCount": 2,
+  "successRate": 83.33333333333334,
+  "failureRate": 16.666666666666664,
+  "lastTestAt": "2026-04-05T12:41:15.203Z"
+}
+```
+
+---
+
 ## Validation
 
 All inputs are validated using Zod.
@@ -238,8 +266,7 @@ flowchart LR
     F --> G[Performance Stats]
     G --> H[React Dashboard]
 
-    class A,B,C,D,E,F done
-    class G,H planned
+    class A,B,C,D,E,F,G,H done
 
     classDef done fill:#2ecc71,color:#fff;
     classDef planned fill:#95a5a6,color:#fff;
