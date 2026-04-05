@@ -8,7 +8,6 @@ async function runTest(req, res, next) {
     next(error);
   }
 }
-
 async function getStats(req, res, next) {
   try {
     const stats = await service.getStats(req.params.id);
@@ -17,7 +16,6 @@ async function getStats(req, res, next) {
     next(error);
   }
 }
-
 module.exports = {
   runTest,
   getStats,
