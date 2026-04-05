@@ -42,7 +42,18 @@ async function runTest(endpointId) {
     return test;
   }
 }
+async function getStats(endpointId) {
+  const endpoint = await endpointRepo.getEndpointById(endpointId);
 
+  if (!endpoint) {
+    const error = new Error("Endpoint not found");
+    error.status = 404;
+    throw error;
+  }
+
+  return testRepo.getStatsByEndpoint(endpointId);
+}
 module.exports = {
   runTest,
+  getStats,
 };

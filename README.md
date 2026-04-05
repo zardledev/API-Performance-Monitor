@@ -6,9 +6,9 @@ A backend application designed to monitor, analyze and optimize API performance.
 
 ## Overview
 
-PulseAPI is a backend service that allows developers to register API endpoints, test them, and analyze their performance over time.
+PulseAPI is a backend service that allows developers to register API endpoints, run tests against them, and analyze their performance over time.
 
-It focuses on measuring response time, reliability, and overall API health.
+It focuses on response time, reliability, and API health through stored test results and aggregated statistics.
 
 This project demonstrates practical skills in:
 - backend architecture design
@@ -16,7 +16,7 @@ This project demonstrates practical skills in:
 - database integration with PostgreSQL
 - ORM usage with Prisma
 - input validation and error handling
-- response time tracking
+- performance measurement and metrics aggregation
 - building scalable and maintainable applications
 
 ---
@@ -33,12 +33,15 @@ Project in progress.
 - Prisma integration
 - Endpoint CRUD API
 - Input validation with Zod
-- API test runner with response time tracking
+- API test runner
+- Response time tracking
+- Endpoint statistics aggregation
 
 ### Next Steps
-- Performance statistics per endpoint
-- Global metrics aggregation
-- React dashboard
+- Global statistics dashboard
+- Filtering and sorting
+- React frontend dashboard
+- Authentication and monitoring history improvements
 
 ---
 
@@ -120,15 +123,11 @@ POST /api/endpoints
 }
 ```
 
----
-
 #### Get all endpoints
 
 ```http
 GET /api/endpoints
 ```
-
----
 
 #### Get endpoint by id
 
@@ -136,15 +135,11 @@ GET /api/endpoints
 GET /api/endpoints/:id
 ```
 
----
-
 #### Update endpoint
 
 ```http
 PUT /api/endpoints/:id
 ```
-
----
 
 #### Delete endpoint
 
@@ -154,7 +149,7 @@ DELETE /api/endpoints/:id
 
 ---
 
-### Run endpoint test
+### Run API test
 
 ```http
 POST /api/endpoints/:id/test
@@ -164,12 +159,32 @@ Example response:
 
 ```json
 {
-  "id": "061e49aa-5d27-427e-801d-9d4ef7731fb3",
-  "endpointId": "3b285da8-e846-45e5-a7fc-be80bf0e75f2",
+  "id": "test-id",
+  "endpointId": "endpoint-id",
   "status": 200,
   "duration": 57,
   "success": true,
-  "createdAt": "2026-04-05T10:59:30.743Z"
+  "createdAt": "2026-04-05T10:30:00.000Z"
+}
+```
+
+---
+
+### Get endpoint statistics
+
+```http
+GET /api/endpoints/:id/stats
+```
+
+Example response:
+
+```json
+{
+  "total": 1,
+  "avgDuration": 57,
+  "minDuration": 57,
+  "maxDuration": 57,
+  "successRate": 100
 }
 ```
 
@@ -177,7 +192,7 @@ Example response:
 
 ## Validation
 
-All inputs are validated using Zod.
+All endpoint inputs are validated using Zod.
 
 Example error response:
 
@@ -238,8 +253,8 @@ flowchart LR
     F --> G[Performance Stats]
     G --> H[React Dashboard]
 
-    class A,B,C,D,E,F done
-    class G,H planned
+    class A,B,C,D,E,F,G done
+    class H planned
 
     classDef done fill:#2ecc71,color:#fff;
     classDef planned fill:#95a5a6,color:#fff;
