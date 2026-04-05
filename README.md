@@ -62,12 +62,22 @@ cd API-Performance-Monitor/backend
 npm install
 ```
 
-### 3. Run the server
+### 3. Backend setup
 
 ```bash
+cd backend
+npm install
 npm run dev
 ```
-### 4. Test the API
+
+### 4. Start PostgreSQL (Docker)
+
+```bash
+docker-compose up -d
+```
+
+
+### 5. Test the API
 ```bash
 GET http://localhost:3000/health
 ```
@@ -79,7 +89,7 @@ Response:
 }
 ```
 
-### 5. Project Structure
+### 6. Project Structure
 ```
 backend/
 └── src/
