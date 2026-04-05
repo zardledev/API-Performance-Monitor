@@ -284,8 +284,7 @@ flowchart LR
     F --> G[Performance Stats]
     G --> H[React Dashboard]
 
-    class A,B,C,D,E,F,G done
-    class H planned
+    class A,B,C,D,E,F,G,H done
 
     classDef done fill:#2ecc71,color:#fff;
     classDef planned fill:#95a5a6,color:#fff;
