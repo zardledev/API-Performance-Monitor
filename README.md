@@ -16,6 +16,7 @@ This project demonstrates practical skills in:
 - database integration with PostgreSQL
 - ORM usage with Prisma
 - input validation and error handling
+- response time tracking
 - building scalable and maintainable applications
 
 ---
@@ -32,11 +33,11 @@ Project in progress.
 - Prisma integration
 - Endpoint CRUD API
 - Input validation with Zod
+- API test runner with response time tracking
 
 ### Next Steps
-- API performance test runner
-- Response time tracking
-- Performance statistics
+- Performance statistics per endpoint
+- Global metrics aggregation
 - React dashboard
 
 ---
@@ -47,6 +48,7 @@ Project in progress.
 - Database: PostgreSQL (Docker)
 - ORM: Prisma
 - Validation: Zod
+- HTTP Client: Axios
 - Frontend: React (planned)
 
 ---
@@ -152,6 +154,27 @@ DELETE /api/endpoints/:id
 
 ---
 
+### Run endpoint test
+
+```http
+POST /api/endpoints/:id/test
+```
+
+Example response:
+
+```json
+{
+  "id": "061e49aa-5d27-427e-801d-9d4ef7731fb3",
+  "endpointId": "3b285da8-e846-45e5-a7fc-be80bf0e75f2",
+  "status": 200,
+  "duration": 57,
+  "success": true,
+  "createdAt": "2026-04-05T10:59:30.743Z"
+}
+```
+
+---
+
 ## Validation
 
 All inputs are validated using Zod.
@@ -184,12 +207,17 @@ backend/
 │   │   └── prisma.js
 │   ├── modules/
 │   │   ├── health/
-│   │   └── endpoints/
-│   │       ├── endpoint.routes.js
-│   │       ├── endpoint.controller.js
-│   │       ├── endpoint.service.js
-│   │       ├── endpoint.repository.js
-│   │       └── endpoint.validation.js
+│   │   ├── endpoints/
+│   │   │   ├── endpoint.routes.js
+│   │   │   ├── endpoint.controller.js
+│   │   │   ├── endpoint.service.js
+│   │   │   ├── endpoint.repository.js
+│   │   │   └── endpoint.validation.js
+│   │   └── tests/
+│   │       ├── test.routes.js
+│   │       ├── test.controller.js
+│   │       ├── test.service.js
+│   │       └── test.repository.js
 │   ├── middlewares/
 │   │   └── validate.js
 ├── prisma/
@@ -210,8 +238,8 @@ flowchart LR
     F --> G[Performance Stats]
     G --> H[React Dashboard]
 
-    class A,B,C,D,E done
-    class F,G,H planned
+    class A,B,C,D,E,F done
+    class G,H planned
 
     classDef done fill:#2ecc71,color:#fff;
     classDef planned fill:#95a5a6,color:#fff;
