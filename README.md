@@ -11,8 +11,9 @@ PulseAPI is a project focused on measuring API performance and providing insight
 This project demonstrates practical skills in:
 - backend architecture design
 - API development with Node.js
+- database integration with PostgreSQL
 - performance analysis
-- building maintainable and scalable applications
+- building scalable and maintainable applications
 
 ---
 
@@ -22,12 +23,14 @@ Project in progress.
 
 ### Completed
 - Express backend initialization
-- Modular architecture (controllers, services, etc.)
+- Modular architecture (routes, middlewares, modules)
 - Healthcheck endpoint
 - PostgreSQL setup with Docker
 
-### Next Steps
+### In Progress
 - Prisma integration
+
+### Next Steps
 - Endpoint management (CRUD)
 - API performance testing
 - Performance statistics
@@ -38,14 +41,11 @@ Project in progress.
 ## Tech Stack
 
 - Backend: Node.js, Express
-- Frontend: React (planned)
 - Database: PostgreSQL (Docker)
-- ORM: Prisma (planned)
+- ORM: Prisma (in progress)
+- Frontend: React (planned)
 
 ---
-
-## Install dependencies
-
 
 ## Getting Started
 
@@ -53,14 +53,18 @@ Project in progress.
 
 ```bash
 git clone https://github.com/zardledev/API-Performance-Monitor
-cd API-Performance-Monitor/backend
+cd API-Performance-Monitor
 ```
 
-### 2. Install dependencies
+---
+
+### 2. Start PostgreSQL (Docker)
 
 ```bash
-npm install
+docker-compose up -d
 ```
+
+---
 
 ### 3. Backend setup
 
@@ -70,18 +74,16 @@ npm install
 npm run dev
 ```
 
-### 4. Start PostgreSQL (Docker)
+---
 
-```bash
-docker-compose up -d
-```
+### 4. Test the API
 
-
-### 5. Test the API
-```bash
+```text
 GET http://localhost:3000/health
 ```
+
 Response:
+
 ```json
 {
   "status": "ok",
@@ -89,8 +91,11 @@ Response:
 }
 ```
 
-### 6. Project Structure
-```
+---
+
+## Project Structure
+
+```text
 backend/
 └── src/
     ├── app.js
@@ -98,8 +103,10 @@ backend/
     ├── modules/
     │   └── health/
     ├── middlewares/
-
 ```
+
+---
+
 ## Roadmap
 
 ```mermaid
@@ -113,14 +120,19 @@ flowchart LR
     G --> H[React Dashboard]
 
     class A,B,C done
-    class D,E,F,G,H planned
+    class D inprogress
+    class E,F,G,H planned
 
     classDef done fill:#2ecc71,color:#fff;
+    classDef inprogress fill:#f39c12,color:#fff;
     classDef planned fill:#95a5a6,color:#fff;
 ```
 
-
+---
 
 ## Author
 
-Julian Boi - Fullstack Developer | React • Node.js • API Optimization • Web Performance | Remote-ready
+Julian Boi  
+Fullstack Developer (React / Node.js)  
+Focused on backend performance and API optimization  
+Open to remote opportunities
