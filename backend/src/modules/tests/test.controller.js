@@ -8,7 +8,15 @@ async function runTest(req, res, next) {
     next(error);
   }
 }
-
+async function getStats(req, res, next) {
+  try {
+    const stats = await service.getStats(req.params.id);
+    res.status(200).json(stats);
+  } catch (error) {
+    next(error);
+  }
+}
 module.exports = {
   runTest,
+  getStats,
 };

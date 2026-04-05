@@ -4,5 +4,6 @@ const controller = require("./test.controller");
 const router = express.Router();
 
 router.post("/:id/test", controller.runTest);
+router.get("/:id/stats", controller.getStats);
 
 module.exports = router;
