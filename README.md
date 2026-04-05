@@ -1,12 +1,14 @@
 # PulseAPI (API Performance Monitor)
 
-A fullstack application designed to monitor, analyze and optimize API performance.
+A backend application designed to monitor, analyze and optimize API performance.
 
 ---
 
 ## Overview
 
-PulseAPI is a project focused on measuring API performance and providing insights on latency, reliability and efficiency.
+PulseAPI is a backend service that allows developers to register API endpoints, test them, and analyze their performance over time.
+
+It focuses on measuring response time, reliability, and overall API health.
 
 This project demonstrates practical skills in:
 - backend architecture design
@@ -34,8 +36,6 @@ Project in progress.
 ### Next Steps
 - API performance test runner
 - Response time tracking
-- Input validation (Zod / Joi)
-- API performance testing system
 - Performance statistics
 - React dashboard
 
@@ -156,7 +156,7 @@ DELETE /api/endpoints/:id
 
 All inputs are validated using Zod.
 
-Example of validation errors:
+Example error response:
 
 ```json
 {
@@ -169,38 +169,6 @@ Example of validation errors:
     }
   ]
 }
-```
-
----
-
-#### Get all endpoints
-
-```http
-GET /api/endpoints
-```
-
----
-
-#### Get endpoint by id
-
-```http
-GET /api/endpoints/:id
-```
-
----
-
-#### Update endpoint
-
-```http
-PUT /api/endpoints/:id
-```
-
----
-
-#### Delete endpoint
-
-```http
-DELETE /api/endpoints/:id
 ```
 
 ---
