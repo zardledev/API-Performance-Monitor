@@ -89,25 +89,24 @@ backend/
     ├── middlewares/
 
 ```
-### RoadMap
+## Roadmap
 
 ```mermaid
-    flowchart LR
-        A[Express Backend] --> B[Healthcheck Route]
-        B --> C[PostgreSQL (Docker)]
-        C --> D[Prisma Setup]
-        D --> E[Endpoint CRUD]
-        E --> F[API Test Runner]
-        F --> G[Performance Stats]
-        G --> H[React Dashboard]
+flowchart LR
+    A[Express Backend] --> B[Healthcheck Route]
+    B --> C["PostgreSQL (Docker)"]
+    C --> D[Prisma Setup]
+    D --> E[Endpoint CRUD]
+    E --> F[API Test Runner]
+    F --> G[Performance Stats]
+    G --> H[React Dashboard]
 
-        class A,B done
-        class C,D,E,F,G,H planned
+    class A,B done
+    class C,D,E,F,G,H planned
 
-        classDef done fill:#2ecc71,color:#fff,stroke:#27ae60,stroke-width:2px;
-        classDef planned fill:#95a5a6,color:#fff,stroke:#7f8c8d,stroke-width:2px;
+    classDef done fill:#2ecc71,color:#fff;
+    classDef planned fill:#95a5a6,color:#fff;
 ```
-
 
 
 
