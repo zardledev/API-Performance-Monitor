@@ -1,18 +1,21 @@
 # PulseAPI (API Performance Monitor)
 
-A fullstack application designed to monitor, analyze and optimize API performance.
+A backend application designed to monitor, analyze and optimize API performance.
 
 ---
 
 ## Overview
 
-PulseAPI is a project focused on measuring API performance and providing insights on latency, reliability and efficiency.
+PulseAPI is a backend service that allows developers to register API endpoints, test them, and analyze their performance over time.
+
+It focuses on measuring response time, reliability, and overall API health.
 
 This project demonstrates practical skills in:
 - backend architecture design
 - REST API development with Node.js
 - database integration with PostgreSQL
 - ORM usage with Prisma
+- input validation and error handling
 - building scalable and maintainable applications
 
 ---
@@ -28,10 +31,11 @@ Project in progress.
 - PostgreSQL setup with Docker
 - Prisma integration
 - Endpoint CRUD API
+- Input validation with Zod
 
 ### Next Steps
-- Input validation (Zod / Joi)
-- API performance testing system
+- API performance test runner
+- Response time tracking
 - Performance statistics
 - React dashboard
 
@@ -42,6 +46,7 @@ Project in progress.
 - Backend: Node.js, Express
 - Database: PostgreSQL (Docker)
 - ORM: Prisma
+- Validation: Zod
 - Frontend: React (planned)
 
 ---
@@ -147,6 +152,27 @@ DELETE /api/endpoints/:id
 
 ---
 
+## Validation
+
+All inputs are validated using Zod.
+
+Example error response:
+
+```json
+{
+  "status": "error",
+  "message": "Validation failed",
+  "errors": [
+    {
+      "field": "url",
+      "message": "URL must be a valid URL"
+    }
+  ]
+}
+```
+
+---
+
 ## Project Structure
 
 ```text
@@ -162,8 +188,10 @@ backend/
 │   │       ├── endpoint.routes.js
 │   │       ├── endpoint.controller.js
 │   │       ├── endpoint.service.js
-│   │       └── endpoint.repository.js
+│   │       ├── endpoint.repository.js
+│   │       └── endpoint.validation.js
 │   ├── middlewares/
+│   │   └── validate.js
 ├── prisma/
 │   └── schema.prisma
 ```
