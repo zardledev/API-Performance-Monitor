@@ -6,13 +6,24 @@ import EndpointList from "./components/EndpointList";
 export default function App() {
   const [endpoints, setEndpoints] = useState([]);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  const overview = [
+    { label: "Endpoints", value: endpoints.length },
+    { label: "Mode", value: "Manual checks" },
+    { label: "Stack", value: "React + Express" },
+  ];
 
   async function loadEndpoints() {
     try {
+      setLoading(true);
       const data = await getEndpoints();
       setEndpoints(data);
+      setError("");
     } catch (err) {
       setError("Failed to load endpoints.");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -31,14 +42,32 @@ export default function App() {
   }
 
   return (
-    <main>
-      <h1>PulseAPI Dashboard</h1>
-      <p>Monitor and analyze API performance.</p>
+    <main className="app-shell">
+      <section className="topbar">
+        <div>
+          <span className="eyebrow">PulseAPI</span>
+          <h1>API performance dashboard</h1>
+          <p className="hero-text">
+            Register endpoints, run checks on demand, and review latency and
+            reliability metrics in one place.
+          </p>
+        </div>
+        <div className="overview-strip">
+          {overview.map((item) => (
+            <div className="overview-card" key={item.label}>
+              <span>{item.label}</span>
+              <strong>{item.value}</strong>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      {error ? <p>{error}</p> : null}
+      {error ? <p className="banner banner-error">{error}</p> : null}
 
-      <EndpointForm onCreate={handleCreateEndpoint} />
-      <EndpointList endpoints={endpoints} />
+      <section className="dashboard-grid">
+        <EndpointForm onCreate={handleCreateEndpoint} />
+        <EndpointList endpoints={endpoints} loading={loading} />
+      </section>
     </main>
   );
 }

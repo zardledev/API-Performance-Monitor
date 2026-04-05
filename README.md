@@ -21,6 +21,16 @@ This project demonstrates practical skills in:
 
 ---
 
+## Dashboard Preview
+
+Current React dashboard preview:
+
+![PulseAPI dashboard](docs/ressources/img/pulseapi-dashboard-preview.png)
+
+Expected file path: `docs/ressources/img/pulseapi-dashboard-preview.png`
+
+---
+
 ## Current Status
 
 Project in progress.
@@ -179,26 +189,6 @@ Example response:
 
 ```json
 {
-  "total": 1,
-  "avgDuration": 57,
-  "minDuration": 57,
-  "maxDuration": 57,
-  "successRate": 100
-}
-```
-
----
-
-### Get endpoint stats
-
-```http
-GET /api/endpoints/:id/stats
-```
-
-Example response:
-
-```json
-{
   "total": 12,
   "avgDuration": 83.5,
   "minDuration": 41,
@@ -233,6 +223,22 @@ Example error response:
   ]
 }
 ```
+
+---
+
+## Git Branches
+
+The project uses feature branches to keep each milestone isolated and easy to review.
+
+| Branch | Purpose |
+| --- | --- |
+| `main` | Stable integration branch containing the current state of the project. |
+| `feature/prisma-setup` | Sets up Prisma and connects the backend to PostgreSQL. |
+| `feature/endpoints-crud` | Implements endpoint creation, listing, update, and deletion. |
+| `feature/endpoints-validation` | Adds Zod validation for endpoint payloads and request safety. |
+| `feature/api-test-runner` | Adds the test runner that executes requests and stores response metrics. |
+| `feature/performance-stats` | Adds endpoint statistics and aggregated performance metrics. |
+| `feature/react-dashboard` | Introduces the React frontend dashboard for interacting with monitors. |
 
 ---
 
