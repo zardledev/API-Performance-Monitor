@@ -34,6 +34,8 @@ Project in progress.
 ### Next Steps
 - API performance test runner
 - Response time tracking
+- Input validation (Zod / Joi)
+- API performance testing system
 - Performance statistics
 - React dashboard
 
@@ -167,6 +169,38 @@ Example of validation errors:
     }
   ]
 }
+```
+
+---
+
+#### Get all endpoints
+
+```http
+GET /api/endpoints
+```
+
+---
+
+#### Get endpoint by id
+
+```http
+GET /api/endpoints/:id
+```
+
+---
+
+#### Update endpoint
+
+```http
+PUT /api/endpoints/:id
+```
+
+---
+
+#### Delete endpoint
+
+```http
+DELETE /api/endpoints/:id
 ```
 
 ---
