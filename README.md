@@ -22,15 +22,16 @@ Project in progress.
 
 ### Completed
 - Express backend initialization
-- Modular project structure
+- Modular architecture (controllers, services, etc.)
 - Healthcheck endpoint
+- PostgreSQL setup with Docker
 
 ### Next Steps
-- PostgreSQL setup (Docker)
 - Prisma integration
 - Endpoint management (CRUD)
 - API performance testing
-- Frontend dashboard (React)
+- Performance statistics
+- React dashboard
 
 ---
 
@@ -101,14 +102,12 @@ flowchart LR
     F --> G[Performance Stats]
     G --> H[React Dashboard]
 
-    class A,B done
-    class C,D,E,F,G,H planned
+    class A,B,C done
+    class D,E,F,G,H planned
 
     classDef done fill:#2ecc71,color:#fff;
     classDef planned fill:#95a5a6,color:#fff;
 ```
-
-
 
 
 
